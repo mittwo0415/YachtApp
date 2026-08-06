@@ -26,3 +26,6 @@ int calculateNumberScore(const std::vector<int>& dice, int targetNumber);
 
 // Choiceの得点計算
 int calculateChoice(const std::vector<int>& dice);
+
+// Four Diceの得点計算
+int calculateFourDice(const std::vector<int>& dice);

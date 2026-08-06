@@ -73,6 +73,7 @@ int main() {
     cout << "Fives  : " << calculateNumberScore(dice, 5) << endl;
     cout << "Sixes  : " << calculateNumberScore(dice, 6) << endl;
     cout << "Choice : " << calculateChoice(dice) << endl;
+    cout << "Four Dice : " << calculateFourDice(dice) << endl;
 
     cout << endl;
     cout << "Press Enter to exit...";
