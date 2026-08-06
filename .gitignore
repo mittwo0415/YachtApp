@@ -1,0 +1,15 @@
+# Visual Studio
+.vs/
+
+# Build output
+Debug/
+Release/
+x64/
+x86/
+
+# User files
+*.user
+*.suo
+
+# IntelliSense
+ipch/
