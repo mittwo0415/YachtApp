@@ -64,6 +64,14 @@ int main() {
     showDice(dice);
 
     cout << endl;
+    cout << "Scores:" << endl;
+
+    cout << "Aces   : " << calculateNumberScore(dice, 1) << endl;
+    cout << "Deuces : " << calculateNumberScore(dice, 2) << endl;
+    cout << "Threes : " << calculateNumberScore(dice, 3) << endl;
+    cout << "Fours  : " << calculateNumberScore(dice, 4) << endl;
+    cout << "Fives  : " << calculateNumberScore(dice, 5) << endl;
+    cout << "Sixes  : " << calculateNumberScore(dice, 6) << endl;
     cout << "Choice : " << calculateChoice(dice) << endl;
 
     cout << endl;

@@ -21,5 +21,8 @@ enum class ScoreCategory {
     Yacht
 };
 
+// Aces〜Sixesの得点計算
+int calculateNumberScore(const std::vector<int>& dice, int targetNumber);
+
 // Choiceの得点計算
 int calculateChoice(const std::vector<int>& dice);
