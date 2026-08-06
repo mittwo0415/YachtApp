@@ -1,4 +1,5 @@
 #include <iostream>
+#include <limits>
 
 #include "Score.h"
 
@@ -324,6 +325,14 @@ void selectAndRecordScore(
 
         int categoryNumber;
         cin >> categoryNumber;
+
+        // 入力が整数でない場合はストリーム状態をクリアして行を破棄し、再入力を促す
+        if (!cin) {
+            cout << "Invalid input." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         // 1～12以外は無効
         if (categoryNumber < 1 ||
