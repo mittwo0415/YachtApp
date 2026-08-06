@@ -29,3 +29,6 @@ int calculateChoice(const std::vector<int>& dice);
 
 // Four Diceの得点計算
 int calculateFourDice(const std::vector<int>& dice);
+
+// Full Houseの得点計算
+int calculateFullHouse(const std::vector<int>& dice);

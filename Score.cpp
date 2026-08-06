@@ -46,3 +46,32 @@ int calculateFourDice(const vector<int>& dice) {
 
     return 0;
 }
+
+// Full Houseの得点計算
+int calculateFullHouse(const vector<int>& dice) {
+    // 出目1～6が、それぞれ何個あるかを数える
+    int counts[7] = {};
+
+    for (int value : dice) {
+        counts[value]++;
+    }
+
+    bool hasThree = false;
+    bool hasTwo = false;
+
+    // 3個同じ目と2個同じ目があるか確認する
+    for (int number = 1; number <= 6; number++) {
+        if (counts[number] == 3) {
+            hasThree = true;
+        }
+        else if (counts[number] == 2) {
+            hasTwo = true;
+        }
+    }
+
+    if (hasThree && hasTwo) {
+        return calculateChoice(dice);
+    }
+
+    return 0;
+}
