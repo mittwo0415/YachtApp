@@ -35,3 +35,6 @@ int calculateFullHouse(const std::vector<int>& dice);
 
 // Small Straightの得点計算
 int calculateSmallStraight(const std::vector<int>& dice);
+
+// Big Straightの得点計算
+int calculateBigStraight(const std::vector<int>& dice);

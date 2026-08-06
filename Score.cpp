@@ -112,3 +112,35 @@ int calculateSmallStraight(const vector<int>& dice) {
 
     return 0;
 }
+
+// Big Straightの得点計算
+int calculateBigStraight(const vector<int>& dice) {
+    // 出目1～6が存在するか記録する
+    bool exists[7] = {};
+
+    for (int value : dice) {
+        exists[value] = true;
+    }
+
+    // 1-2-3-4-5
+    bool firstStraight =
+        exists[1] &&
+        exists[2] &&
+        exists[3] &&
+        exists[4] &&
+        exists[5];
+
+    // 2-3-4-5-6
+    bool secondStraight =
+        exists[2] &&
+        exists[3] &&
+        exists[4] &&
+        exists[5] &&
+        exists[6];
+
+    if (firstStraight || secondStraight) {
+        return 30;
+    }
+
+    return 0;
+}
