@@ -252,3 +252,97 @@ int calculateTotalScore(const ScoreBoard& scoreBoard) {
 
     return total;
 }
+
+// 選択した役の得点を計算する
+int calculateScoreByCategory(
+    const vector<int>& dice,
+    ScoreCategory category
+) {
+    switch (category) {
+    case ScoreCategory::Aces:
+        return calculateNumberScore(dice, 1);
+
+    case ScoreCategory::Deuces:
+        return calculateNumberScore(dice, 2);
+
+    case ScoreCategory::Threes:
+        return calculateNumberScore(dice, 3);
+
+    case ScoreCategory::Fours:
+        return calculateNumberScore(dice, 4);
+
+    case ScoreCategory::Fives:
+        return calculateNumberScore(dice, 5);
+
+    case ScoreCategory::Sixes:
+        return calculateNumberScore(dice, 6);
+
+    case ScoreCategory::Choice:
+        return calculateChoice(dice);
+
+    case ScoreCategory::FourDice:
+        return calculateFourDice(dice);
+
+    case ScoreCategory::FullHouse:
+        return calculateFullHouse(dice);
+
+    case ScoreCategory::SmallStraight:
+        return calculateSmallStraight(dice);
+
+    case ScoreCategory::BigStraight:
+        return calculateBigStraight(dice);
+
+    case ScoreCategory::Yacht:
+        return calculateYacht(dice);
+    }
+
+    return 0;
+}
+
+// プレイヤーに役を選ばせてスコア表へ登録する
+void selectAndRecordScore(
+    const vector<int>& dice,
+    ScoreBoard& scoreBoard
+) {
+    while (true) {
+        showScoreBoard(scoreBoard);
+
+        cout << endl;
+        cout << "Select a category number: ";
+
+        int categoryNumber;
+        cin >> categoryNumber;
+
+        // 1～12以外は無効
+        if (categoryNumber < 1 ||
+            categoryNumber > ScoreCategoryCount) {
+            cout << "Invalid category number." << endl;
+            continue;
+        }
+
+        int index = categoryNumber - 1;
+
+        // 使用済みの役は選択できない
+        if (scoreBoard[index].isUsed) {
+            cout << "This category has already been used." << endl;
+            continue;
+        }
+
+        ScoreCategory category =
+            static_cast<ScoreCategory>(index);
+
+        int score =
+            calculateScoreByCategory(dice, category);
+
+        scoreBoard[index].score = score;
+        scoreBoard[index].isUsed = true;
+
+        cout << endl;
+        cout << getCategoryName(category)
+            << " score: "
+            << score
+            << endl;
+
+        break;
+    }
+}

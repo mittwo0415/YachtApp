@@ -63,3 +63,15 @@ void showScoreBoard(const ScoreBoard& scoreBoard);
 
 // 合計点を計算する
 int calculateTotalScore(const ScoreBoard& scoreBoard);
+
+// 選択した役の得点を計算する
+int calculateScoreByCategory(
+    const std::vector<int>& dice,
+    ScoreCategory category
+);
+
+// プレイヤーに役を選ばせてスコア表へ登録する
+void selectAndRecordScore(
+    const std::vector<int>& dice,
+    ScoreBoard& scoreBoard
+);

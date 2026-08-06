@@ -64,23 +64,11 @@ int main() {
     cout << "Final result:" << endl;
     showDice(dice);
 
+    // プレイヤーが役を選び、得点を記録する
+    selectAndRecordScore(dice, scoreBoard);
+
+    // 登録後のスコア表を表示する
     showScoreBoard(scoreBoard);
-
-    cout << endl;
-    cout << "Scores:" << endl;
-
-    cout << "Aces   : " << calculateNumberScore(dice, 1) << endl;
-    cout << "Deuces : " << calculateNumberScore(dice, 2) << endl;
-    cout << "Threes : " << calculateNumberScore(dice, 3) << endl;
-    cout << "Fours  : " << calculateNumberScore(dice, 4) << endl;
-    cout << "Fives  : " << calculateNumberScore(dice, 5) << endl;
-    cout << "Sixes  : " << calculateNumberScore(dice, 6) << endl;
-    cout << "Choice : " << calculateChoice(dice) << endl;
-    cout << "Four Dice : " << calculateFourDice(dice) << endl;
-    cout << "Full House : " << calculateFullHouse(dice) << endl;
-    cout << "Small Straight : " << calculateSmallStraight(dice) << endl;
-    cout << "Big Straight   : " << calculateBigStraight(dice) << endl;
-    cout << "Yacht          : " << calculateYacht(dice) << endl;
 
     cout << endl;
     cout << "Press Enter to exit...";
