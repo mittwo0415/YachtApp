@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="YachtApp.vcxproj" />
+  <Project Path="YachtApp.vcxproj" Id="9b6a3a3f-9605-4084-8472-877742a673c3" />
 </Solution>
