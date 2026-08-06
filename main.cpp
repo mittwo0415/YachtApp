@@ -77,6 +77,7 @@ int main() {
     cout << "Full House : " << calculateFullHouse(dice) << endl;
     cout << "Small Straight : " << calculateSmallStraight(dice) << endl;
     cout << "Big Straight   : " << calculateBigStraight(dice) << endl;
+    cout << "Yacht          : " << calculateYacht(dice) << endl;
 
     cout << endl;
     cout << "Press Enter to exit...";

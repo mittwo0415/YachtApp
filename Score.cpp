@@ -144,3 +144,23 @@ int calculateBigStraight(const vector<int>& dice) {
 
     return 0;
 }
+
+// Yachtの得点計算
+int calculateYacht(const vector<int>& dice) {
+
+    // 出目1～6が、それぞれ何個あるかを数える
+    int counts[7] = {};
+
+    for (int value : dice) {
+        counts[value]++;
+    }
+
+    // 同じ目が5個あるか確認する
+    for (int number = 1; number <= 6; number++) {
+        if (counts[number] == 5) {
+            return 50;
+        }
+    }
+
+    return 0;
+}

@@ -38,3 +38,6 @@ int calculateSmallStraight(const std::vector<int>& dice);
 
 // Big Straightの得点計算
 int calculateBigStraight(const std::vector<int>& dice);
+
+// Yachtの得点計算
+int calculateYacht(const std::vector<int>& dice);
