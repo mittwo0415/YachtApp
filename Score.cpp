@@ -235,6 +235,15 @@ void showScoreBoard(const ScoreBoard& scoreBoard) {
     }
 
     cout << "------------------------" << endl;
+    cout << "Upper subtotal: "
+        << calculateUpperSectionScore(scoreBoard)
+        << endl;
+
+    cout << "Upper bonus   : "
+        << calculateUpperBonus(scoreBoard)
+        << endl;
+
+    cout << "------------------------" << endl;
     cout << "Total: "
         << calculateTotalScore(scoreBoard)
         << endl;
@@ -249,6 +258,9 @@ int calculateTotalScore(const ScoreBoard& scoreBoard) {
             total += entry.score;
         }
     }
+
+    // Aces～Sixesのボーナスを加算する
+    total += calculateUpperBonus(scoreBoard);
 
     return total;
 }
@@ -345,4 +357,27 @@ void selectAndRecordScore(
 
         break;
     }
+}
+
+// Aces～Sixesの小計を計算する
+int calculateUpperSectionScore(const ScoreBoard& scoreBoard) {
+    int total = 0;
+
+    // Aces～Sixesはインデックス0～5
+    for (int i = 0; i < 6; i++) {
+        if (scoreBoard[i].isUsed) {
+            total += scoreBoard[i].score;
+        }
+    }
+
+    return total;
+}
+
+// Aces～Sixesの合計が63点以上なら35点
+int calculateUpperBonus(const ScoreBoard& scoreBoard) {
+    if (calculateUpperSectionScore(scoreBoard) >= 63) {
+        return 35;
+    }
+
+    return 0;
 }

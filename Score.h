@@ -75,3 +75,9 @@ void selectAndRecordScore(
     const std::vector<int>& dice,
     ScoreBoard& scoreBoard
 );
+
+// Aces～Sixesの小計を計算する
+int calculateUpperSectionScore(const ScoreBoard& scoreBoard);
+
+// ボーナスを計算する
+int calculateUpperBonus(const ScoreBoard& scoreBoard);
