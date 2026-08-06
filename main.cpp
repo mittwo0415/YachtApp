@@ -10,6 +10,7 @@ using namespace std;
 int main() {
 
     vector<int> dice(5);
+    ScoreBoard scoreBoard;
 
     // 最初に5個振る
     rollAllDice(dice);
@@ -62,6 +63,8 @@ int main() {
     cout << endl;
     cout << "Final result:" << endl;
     showDice(dice);
+
+    showScoreBoard(scoreBoard);
 
     cout << endl;
     cout << "Scores:" << endl;

@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "Score.h"
 
 using namespace std;
@@ -163,4 +165,90 @@ int calculateYacht(const vector<int>& dice) {
     }
 
     return 0;
+}
+
+// 役名を取得する
+const char* getCategoryName(ScoreCategory category) {
+    switch (category) {
+    case ScoreCategory::Aces:
+        return "Aces";
+
+    case ScoreCategory::Deuces:
+        return "Deuces";
+
+    case ScoreCategory::Threes:
+        return "Threes";
+
+    case ScoreCategory::Fours:
+        return "Fours";
+
+    case ScoreCategory::Fives:
+        return "Fives";
+
+    case ScoreCategory::Sixes:
+        return "Sixes";
+
+    case ScoreCategory::Choice:
+        return "Choice";
+
+    case ScoreCategory::FourDice:
+        return "Four Dice";
+
+    case ScoreCategory::FullHouse:
+        return "Full House";
+
+    case ScoreCategory::SmallStraight:
+        return "Small Straight";
+
+    case ScoreCategory::BigStraight:
+        return "Big Straight";
+
+    case ScoreCategory::Yacht:
+        return "Yacht";
+    }
+
+    return "Unknown";
+}
+
+// スコア表を表示する
+void showScoreBoard(const ScoreBoard& scoreBoard) {
+    cout << endl;
+    cout << "Score Board" << endl;
+    cout << "------------------------" << endl;
+
+    for (int i = 0; i < ScoreCategoryCount; i++) {
+        ScoreCategory category =
+            static_cast<ScoreCategory>(i);
+
+        cout << i + 1 << ". "
+            << getCategoryName(category)
+            << " : ";
+
+        if (scoreBoard[i].isUsed) {
+            cout << scoreBoard[i].score;
+        }
+        else {
+            cout << "-";
+        }
+
+        cout << endl;
+    }
+
+    cout << "------------------------" << endl;
+    cout << "Total: "
+        << calculateTotalScore(scoreBoard)
+        << endl;
+}
+
+// 合計点を計算する
+int calculateTotalScore(const ScoreBoard& scoreBoard) {
+    int total = 0;
+
+    for (const ScoreEntry& entry : scoreBoard) {
+        if (entry.isUsed) {
+            total += entry.score;
+        }
+    }
+
+    return total;
 }

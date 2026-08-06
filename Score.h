@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <vector>
 
 // 役一覧
@@ -21,7 +22,19 @@ enum class ScoreCategory {
     Yacht
 };
 
-// Aces〜Sixesの得点計算
+// 役の数
+constexpr int ScoreCategoryCount = 12;
+
+// 1つの役の記録
+struct ScoreEntry {
+    int score = 0;
+    bool isUsed = false;
+};
+
+// 12役分のスコア表
+using ScoreBoard = std::array<ScoreEntry, ScoreCategoryCount>;
+
+// Aces～Sixesの得点計算
 int calculateNumberScore(const std::vector<int>& dice, int targetNumber);
 
 // Choiceの得点計算
@@ -41,3 +54,12 @@ int calculateBigStraight(const std::vector<int>& dice);
 
 // Yachtの得点計算
 int calculateYacht(const std::vector<int>& dice);
+
+// 役名を取得する
+const char* getCategoryName(ScoreCategory category);
+
+// スコア表を表示する
+void showScoreBoard(const ScoreBoard& scoreBoard);
+
+// 合計点を計算する
+int calculateTotalScore(const ScoreBoard& scoreBoard);
