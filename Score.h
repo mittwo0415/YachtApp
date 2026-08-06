@@ -32,3 +32,6 @@ int calculateFourDice(const std::vector<int>& dice);
 
 // Full Houseの得点計算
 int calculateFullHouse(const std::vector<int>& dice);
+
+// Small Straightの得点計算
+int calculateSmallStraight(const std::vector<int>& dice);
