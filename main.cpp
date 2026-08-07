@@ -1,113 +1,74 @@
 ﻿#include <iostream>
-#include <limits>
-#include <vector>
 
-#include "Dice.h"
+#include "Game.h"
 #include "Score.h"
 
 using namespace std;
 
 int main() {
-    vector<int> dice(5);
-    ScoreBoard scoreBoard;
+    ScoreBoard playerA;
+    ScoreBoard playerB;
 
-    // 全12ターン行う
-    for (int turn = 1; turn <= ScoreCategoryCount; turn++) {
+    // 全12ラウンド
+    for (int round = 1; round <= ScoreCategoryCount; round++) {
 
         cout << endl;
         cout << "========================" << endl;
-        cout << "Turn " << turn
+        cout << "Round " << round
             << " / " << ScoreCategoryCount << endl;
         cout << "========================" << endl;
 
-        // 毎ターン最初に5個すべて振る
-        rollAllDice(dice);
-        showDice(dice);
-
-        // 最大2回まで振り直す
-        for (int rerollCount = 1; rerollCount <= 2; rerollCount++) {
-            char choice;
-
-            cout << endl;
-            cout << "[r] Reroll" << endl;
-            cout << "[q] Finish rolling" << endl;
-            cout << "Select: ";
-
-            cin >> choice;
-
-            // 振り直しを終了する
-            if (choice == 'q') {
-                break;
-            }
-
-            // サイコロを振り直す
-            if (choice == 'r') {
-                cout << endl;
-                cout << "Enter dice numbers to reroll." << endl;
-                cout << "Example: 1 3 5" << endl;
-                cout << "Enter 0 when finished: ";
-
-                int diceNumber;
-
-                while (cin >> diceNumber && diceNumber != 0) {
-                    if (diceNumber >= 1 && diceNumber <= 5) {
-                        rerollDice(dice, diceNumber - 1);
-                    }
-                    else {
-                        cout << "Invalid number." << endl;
-                    }
-                }
-
-                cout << endl;
-                cout << "Reroll "
-                    << rerollCount
-                    << " / 2 completed." << endl;
-
-                showDice(dice);
-            }
-            else {
-                cout << "Invalid command." << endl;
-
-                // 無効入力では振り直し回数を消費しない
-                rerollCount--;
-            }
-        }
-
+        // Player A
         cout << endl;
-        cout << "Final result:" << endl;
-        showDice(dice);
+        cout << "Player A Turn" << endl;
 
-        // プレイヤーが役を選び、得点を登録する
-        selectAndRecordScore(dice, scoreBoard);
+        playTurn(playerA);
 
+        // Player B
         cout << endl;
-        cout << "Score after turn "
-            << turn << ":" << endl;
+        cout << "Player B Turn" << endl;
 
-        showScoreBoard(scoreBoard);
+        playTurn(playerB);
     }
 
-    // 全12ターン終了
+    // 最終結果
     cout << endl;
     cout << "========================" << endl;
-    cout << "Game Over" << endl;
+    cout << "Final Results" << endl;
     cout << "========================" << endl;
 
-    showScoreBoard(scoreBoard);
+    cout << endl;
+    cout << "Player A" << endl;
+    showScoreBoard(playerA);
 
     cout << endl;
-    cout << "Final total score: "
-        << calculateTotalScore(scoreBoard)
-        << endl;
+    cout << "Player B" << endl;
+    showScoreBoard(playerB);
 
-    // コンソールをすぐ閉じないようにする
+    int playerATotal = calculateTotalScore(playerA);
+    int playerBTotal = calculateTotalScore(playerB);
+
+    cout << endl;
+    cout << "Player A Total: " << playerATotal << endl;
+    cout << "Player B Total: " << playerBTotal << endl;
+
+    cout << endl;
+
+    // 勝敗判定
+    if (playerATotal > playerBTotal) {
+        cout << "Player A Wins!" << endl;
+    }
+    else if (playerBTotal > playerATotal) {
+        cout << "Player B Wins!" << endl;
+    }
+    else {
+        cout << "Draw!" << endl;
+    }
+
     cout << endl;
     cout << "Press Enter to exit...";
 
-    cin.ignore(
-        numeric_limits<streamsize>::max(),
-        '\n'
-    );
+    cin.ignore();
     cin.get();
 
     return 0;
