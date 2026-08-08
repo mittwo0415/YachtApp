@@ -32,8 +32,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9b6a3a3f-9605-4084-8472-877742a673c3}</ProjectGuid>
-    <RootNamespace>YachtApp</RootNamespace>
+    <ProjectGuid>{982fa9b2-9cbc-43a1-b057-aba97854857a}</ProjectGuid>
+    <RootNamespace>YachtAppConsole</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
