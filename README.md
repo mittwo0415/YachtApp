@@ -56,13 +56,16 @@ Aces、Deuces、Threes、Fours、Fives、Sixesの合計が63点以上の場合�
 
 ```text
 YachtApp
-├── main.cpp
-├── Game.h
-├── Game.cpp
-├── Dice.h
-├── Dice.cpp
-├── Score.h
-└── Score.cpp
+├─ YachtAppConsole
+│  ├─ main.cpp
+│  ├─ Game.h
+│  ├─ Game.cpp
+│  ├─ Dice.h
+│  ├─ Dice.cpp
+│  ├─ Score.h
+│  └─ Score.cpp
+│
+└─ YachtAppGUI
 ```
 
 main.cpp  
