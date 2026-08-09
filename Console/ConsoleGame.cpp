@@ -1,27 +1,27 @@
-#include "Game.h"
+#include "ConsoleGame.h"
 
 #include <iostream>
 #include <vector>
 
-#include "Dice.h"
+#include "ConsoleDice.h"
+#include "ConsoleScore.h"
+#include "Game.h"
 
 using namespace std;
 
-// プレイヤー1人分の1ターンを実行する
-void playTurn(ScoreBoard& scoreBoard) {
-
-    vector<int> dice(5);
-
+// コンソール上でプレイヤー1人分の1ターンを実行する
+void playTurnConsole(ScoreBoard& scoreBoard)
+{
     // 最初に5個すべて振る
-    rollAllDice(dice);
+    vector<int> dice = startTurn();
 
     showDice(dice);
 
     // 最大2回まで振り直す
     for (int rerollCount = 1;
-        rerollCount <= 2;
-        rerollCount++) {
-
+        rerollCount <= MaxRerollCount;
+        ++rerollCount)
+    {
         char choice;
 
         cout << endl;
@@ -32,49 +32,60 @@ void playTurn(ScoreBoard& scoreBoard) {
         cin >> choice;
 
         // 振り直さず終了
-        if (choice == 'q') {
+        if (choice == 'q')
+        {
             break;
         }
 
         // 振り直す
-        if (choice == 'r') {
-
+        if (choice == 'r')
+        {
             cout << endl;
             cout << "Enter dice numbers to reroll." << endl;
             cout << "Example: 1 3 5" << endl;
             cout << "Enter 0 when finished: ";
 
+            vector<int> indexes;
             int diceNumber;
 
             while (cin >> diceNumber &&
-                diceNumber != 0) {
-
+                diceNumber != 0)
+            {
                 if (diceNumber >= 1 &&
-                    diceNumber <= 5) {
-
-                    rerollDice(
-                        dice,
+                    diceNumber <= DiceCount)
+                {
+                    indexes.push_back(
                         diceNumber - 1
                     );
                 }
-                else {
+                else
+                {
                     cout << "Invalid number." << endl;
                 }
             }
 
+            // 選択されたサイコロをCore側で振り直す
+            rerollSelectedDice(
+                dice,
+                indexes
+            );
+
             cout << endl;
             cout << "Reroll "
                 << rerollCount
-                << " / 2 completed."
+                << " / "
+                << MaxRerollCount
+                << " completed."
                 << endl;
 
             showDice(dice);
         }
-        else {
+        else
+        {
             cout << "Invalid command." << endl;
 
             // 無効入力では回数を消費しない
-            rerollCount--;
+            --rerollCount;
         }
     }
 
@@ -85,7 +96,7 @@ void playTurn(ScoreBoard& scoreBoard) {
     showDice(dice);
 
     // 役を選択してスコア表へ登録
-    selectAndRecordScore(
+    selectAndRecordScoreConsole(
         dice,
         scoreBoard
     );
