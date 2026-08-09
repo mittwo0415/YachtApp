@@ -3,6 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="YachtAppConsole/YachtAppConsole.vcxproj" Id="982fa9b2-9cbc-43a1-b057-aba97854857a" />
-  <Project Path="YachtAppGUI/YachtAppGUI.vcxproj" Id="15036a5d-d0df-4142-9217-4daa3b049142" />
+  <Project Path="Console/Console.vcxproj" Id="2d7f0340-1a36-4b76-87d4-75e8429c33c7" />
+  <Project Path="Core/Core.vcxproj" Id="1a48f2a1-1298-4399-ac2b-596b0dba449c" />
+  <Project Path="GUI/GUI.vcxproj" Id="c235c40e-675f-4570-8112-2451c161f60a" />
 </Solution>
