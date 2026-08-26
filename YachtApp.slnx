@@ -5,4 +5,7 @@
   </Configurations>
   <Project Path="Console/Console.vcxproj" Id="2d7f0340-1a36-4b76-87d4-75e8429c33c7" />
   <Project Path="Core/Core.vcxproj" Id="1a48f2a1-1298-4399-ac2b-596b0dba449c" />
+  <Project Path="GUI/GUI.vcxproj" Id="78b12088-5d77-4bed-a96d-0ff7206e08b8">
+    <Deploy />
+  </Project>
 </Solution>

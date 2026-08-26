@@ -10,6 +10,22 @@
     Title="GUI">
 
     <Grid>
+        <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Spacing="20">
 
+            <TextBlock
+            x:Name="DiceText"
+            Text="? ? ? ? ?"
+            FontSize="40"
+            HorizontalAlignment="Center"/>
+
+            <Button
+            Content="Roll Dice"
+            HorizontalAlignment="Center"
+            Click="RollDice_Click"/>
+
+        </StackPanel>
     </Grid>
 </Window>
