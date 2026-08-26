@@ -13,3 +13,9 @@ x86/
 
 # IntelliSense
 ipch/
+
+# NuGet packages
+packages/
+
+# Visual Studio / WinUI generated files
+**/Generated Files/
